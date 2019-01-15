@@ -20,7 +20,7 @@ Before beginning this tutorial, you'll need:
 
 ### 1. Download git and open with IDE.
 
-![alt text](https://raw.githubusercontent.com/tal2k4xj/Watson_Gradle_Clean/master/image/downloadgit.png)
+![Screenshot](image/downloadgit.png)
 
 
 
