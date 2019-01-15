@@ -55,33 +55,33 @@ On the left menu press on "Service credentials", click on "New credential" butto
 Copy the code below to the Main.java, replace Your-Api-Key with the API-Key of Visual Recognition service that you copied before and Run the program.
 
 	```Java
-		import com.ibm.watson.developer_cloud.service.security.IamOptions;
-		import com.ibm.watson.developer_cloud.visual_recognition.v3.*;
-		import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
-		import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyOptions;
-		import java.io.FileNotFoundException;
-		import java.io.InputStream;
-		import java.util.Arrays;
+	import com.ibm.watson.developer_cloud.service.security.IamOptions;
+	import com.ibm.watson.developer_cloud.visual_recognition.v3.*;
+	import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
+	import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyOptions;
+	import java.io.FileNotFoundException;
+	import java.io.InputStream;
+	import java.util.Arrays;
 
-		public class Main {
-			public static void main(String[] args) throws FileNotFoundException {
-				IamOptions options = new IamOptions.Builder()
-						.apiKey("Your-Api-Key")
-						.build();
+	public class Main {
+		public static void main(String[] args) throws FileNotFoundException {
+			IamOptions options = new IamOptions.Builder()
+					.apiKey("Your-Api-Key")
+					.build();
 
-				VisualRecognition service = new VisualRecognition("2018-03-19", options);
+			VisualRecognition service = new VisualRecognition("2018-03-19", options);
 
-				InputStream imagesStream = ClassLoader.getSystemClassLoader().getResourceAsStream("fruitbowl.jpg");
-				ClassifyOptions classifyOptions = new ClassifyOptions.Builder()
-						.imagesFile(imagesStream)
-						.imagesFilename("fruitbowl.jpg")
-						.owners(Arrays.asList("IBM"))
-						.classifierIds(Arrays.asList("food"))
-						.build();
-				ClassifiedImages result = service.classify(classifyOptions).execute();
-				System.out.println(result);
-			}
+			InputStream imagesStream = ClassLoader.getSystemClassLoader().getResourceAsStream("fruitbowl.jpg");
+			ClassifyOptions classifyOptions = new ClassifyOptions.Builder()
+					.imagesFile(imagesStream)
+					.imagesFilename("fruitbowl.jpg")
+					.owners(Arrays.asList("IBM"))
+					.classifierIds(Arrays.asList("food"))
+					.build();
+			ClassifiedImages result = service.classify(classifyOptions).execute();
+			System.out.println(result);
 		}
+	}
 	```
 
 For more information [Go To Watson Visual Recognition API Reference](https://cloud.ibm.com/apidocs/visual-recognition?language=java#classify-images).
@@ -93,56 +93,56 @@ For more information [Go To Watson Visual Recognition API Reference](https://clo
 Copy the code below to the Main.java, replace Your-Api-Key & Your-URL with the API-Key & URL of Cloudant service that you copied before and Run the program.
 	
 	```Java
-		import com.cloudant.client.api.ClientBuilder;
-		import com.cloudant.client.api.CloudantClient;
-		import com.cloudant.client.api.Database;
-		import java.net.MalformedURLException;
-		import java.net.URL;
-		import java.util.List;
+	import com.cloudant.client.api.ClientBuilder;
+	import com.cloudant.client.api.CloudantClient;
+	import com.cloudant.client.api.Database;
+	import java.net.MalformedURLException;
+	import java.net.URL;
+	import java.util.List;
 
-		public class Main {
-			public static void main(String[] args) throws MalformedURLException {
-				// Create a new CloudantClient instance
-				CloudantClient client = ClientBuilder.url(new URL("Your-URL"))
-						.iamApiKey("Your-Api-Key")
-						.build();
+	public class Main {
+		public static void main(String[] args) throws MalformedURLException {
+			// Create a new CloudantClient instance
+			CloudantClient client = ClientBuilder.url(new URL("Your-URL"))
+					.iamApiKey("Your-Api-Key")
+					.build();
 
-				// Get a List of all the databases this Cloudant account
-				List<String> databases = client.getAllDbs();
-				System.out.println("All my databases : ");
-				for ( String db : databases ) {
-					System.out.println(db);
-				}
-
-				// Create a new database.
-				client.createDB("example_db");
-
-				// Get a Database instance to interact with, but don't create it if it doesn't already exist
-				Database db = client.database("example_db", false);
-
-				// Create an ExampleDocument and save it in the database
-				db.save(new ExampleDocument(true));
-				System.out.println("You have inserted the document");
-
-				// Get an ExampleDocument out of the database and deserialize the JSON into a Java type
-				ExampleDocument doc = db.find(ExampleDocument.class,"example_id");
-				System.out.println(doc);
+			// Get a List of all the databases this Cloudant account
+			List<String> databases = client.getAllDbs();
+			System.out.println("All my databases : ");
+			for ( String db : databases ) {
+				System.out.println(db);
 			}
 
-			public static class ExampleDocument {
-				private String _id = "example_id";
-				private String _rev = null;
-				private boolean isExample;
+			// Create a new database.
+			client.createDB("example_db");
 
-				public ExampleDocument(boolean isExample) {
-					this.isExample = isExample;
-				}
+			// Get a Database instance to interact with, but don't create it if it doesn't already exist
+			Database db = client.database("example_db", false);
 
-				public String toString() {
-					return "{ id: " + _id + ",\nrev: " + _rev + ",\nisExample: " + isExample + "\n}";
-				}
+			// Create an ExampleDocument and save it in the database
+			db.save(new ExampleDocument(true));
+			System.out.println("You have inserted the document");
+
+			// Get an ExampleDocument out of the database and deserialize the JSON into a Java type
+			ExampleDocument doc = db.find(ExampleDocument.class,"example_id");
+			System.out.println(doc);
+		}
+
+		public static class ExampleDocument {
+			private String _id = "example_id";
+			private String _rev = null;
+			private boolean isExample;
+
+			public ExampleDocument(boolean isExample) {
+				this.isExample = isExample;
+			}
+
+			public String toString() {
+				return "{ id: " + _id + ",\nrev: " + _rev + ",\nisExample: " + isExample + "\n}";
 			}
 		}
+	}
 	```
 
 For more information [Go To Cloudant NoSQL Java SDK Reference](https://github.com/cloudant/java-cloudant#getting-started).
@@ -154,58 +154,58 @@ For more information [Go To Cloudant NoSQL Java SDK Reference](https://github.co
 Copy the code below to the Main.java and Run the program.
 
 	```Java
-		import java.io.BufferedReader;
-		import java.io.DataOutputStream;
-		import java.io.IOException;
-		import java.io.InputStreamReader;
-		import java.net.HttpURLConnection;
-		import java.net.URL;
+	import java.io.BufferedReader;
+	import java.io.DataOutputStream;
+	import java.io.IOException;
+	import java.io.InputStreamReader;
+	import java.net.HttpURLConnection;
+	import java.net.URL;
 
-		public class Main {
-			public static void main(String[] args) throws IOException {
-				String NUTRITIONIX_ID = "b14f5890";
-				String NUTRITIONIX_KEY = "e94ac7afb24c1bfd1d52e43538cc8498";
-				String NUTRITIONIX_USER = "tal2k4xj";
+	public class Main {
+		public static void main(String[] args) throws IOException {
+			String NUTRITIONIX_ID = "b14f5890";
+			String NUTRITIONIX_KEY = "e94ac7afb24c1bfd1d52e43538cc8498";
+			String NUTRITIONIX_USER = "tal2k4xj";
 
-				//set up the parameters of our request
-				String url = "https://trackapi.nutritionix.com/v2/natural/nutrients";
+			//set up the parameters of our request
+			String url = "https://trackapi.nutritionix.com/v2/natural/nutrients";
 
-				URL obj = new URL(url);
-				HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+			URL obj = new URL(url);
+			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-				con.setRequestMethod("POST");
+			con.setRequestMethod("POST");
 
-				con.setRequestProperty("User-Agent", "Mozilla/5.0");
-				con.setRequestProperty("Content-Type", "application/json");
-				con.setRequestProperty("x-app-id", NUTRITIONIX_ID);
-				con.setRequestProperty("x-app-key", NUTRITIONIX_KEY);
-				con.setRequestProperty("x-remote-user-id", NUTRITIONIX_USER);
+			con.setRequestProperty("User-Agent", "Mozilla/5.0");
+			con.setRequestProperty("Content-Type", "application/json");
+			con.setRequestProperty("x-app-id", NUTRITIONIX_ID);
+			con.setRequestProperty("x-app-key", NUTRITIONIX_KEY);
+			con.setRequestProperty("x-remote-user-id", NUTRITIONIX_USER);
 
-				String urlParameters = "{\"query\":\"" + "Banana" + "\"}";
+			String urlParameters = "{\"query\":\"" + "Banana" + "\"}";
 
-				//start the connection and send request
-				con.setDoOutput(true);
-				DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+			//start the connection and send request
+			con.setDoOutput(true);
+			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 
-				wr.writeBytes(urlParameters);
+			wr.writeBytes(urlParameters);
 
-				wr.flush();
-				wr.close();
+			wr.flush();
+			wr.close();
 
-				//get result
-				con.getResponseCode();
-				BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-				String inputLine;
-				StringBuffer response = new StringBuffer();
+			//get result
+			con.getResponseCode();
+			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			String inputLine;
+			StringBuffer response = new StringBuffer();
 
-				while ((inputLine = in.readLine()) != null) {
-					response.append(inputLine);
-				}
-				in.close();
-
-				System.out.println(response.toString());
+			while ((inputLine = in.readLine()) != null) {
+				response.append(inputLine);
 			}
+			in.close();
+
+			System.out.println(response.toString());
 		}
+	}
 	```
 
 For more information [Go To Nutritionix API Live Demo](https://www.nutritionix.com/natural-demo).
