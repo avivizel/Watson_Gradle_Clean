@@ -13,4 +13,5 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     implementation 'com.ibm.watson.developer_cloud:java-sdk:6.11.0'
+    implementation group: 'com.cloudant', name: 'cloudant-client', version: '2.14.0'
 }
