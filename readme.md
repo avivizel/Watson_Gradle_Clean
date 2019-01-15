@@ -23,31 +23,38 @@ Before beginning this tutorial, you'll need:
 ### 1. Download git and open with IDE:
 
 Scroll up and press "Clone or Download" button and then "Download ZIP".
+
 ![Screenshot](https://github.com/tal2k4xj/Watson_Gradle_Clean/blob/master/images/downloadgit.png?raw=true)
 
 Extract it where ever you will remember, and open it with the IDE (in this example with Visual Studio Code).
+
 ![Screenshot](https://github.com/tal2k4xj/Watson_Gradle_Clean/blob/master/images/visualstudiocode.png?raw=true)
 
 ### 2. Create Watson Visual Recognition service:
 
 [Go To Visual Recognition sevice](https://cloud.ibm.com/catalog/services/visual-recognition), remember the service name and press "Create".
+
 ![Screenshot](https://github.com/tal2k4xj/Watson_Gradle_Clean/blob/master/images/visualrecognitioncreate.png?raw=true)
 
 On the left menu press on "Manage" and save the Credentials (API Key and URL) on text file on your computer.
+
 ![Screenshot](https://github.com/tal2k4xj/Watson_Gradle_Clean/blob/master/images/visualreccreds.png?raw=true)
 
 ### 3. Create Cloudant NoSQL service:
 
 [Go To Cloudant NoSQL sevice](https://cloud.ibm.com/catalog/services/cloudant), remember the service name, on "Available authentication methods" select "Use only IAM" and press "Create".
+
 ![Screenshot](https://github.com/tal2k4xj/Watson_Gradle_Clean/blob/master/images/createcloudant.png?raw=true)
 
 On the left menu press on "Service credentials", click on "New credential" button (in the new window just press "Add") and now you can view your service credentials, save the Credentials on text file on your computer.
+
 ![Screenshot](https://github.com/tal2k4xj/Watson_Gradle_Clean/blob/master/images/cloudantcreds.png?raw=true)
 
 ### 4. How to use Watson Visual Recognitoin service:
 
 Copy the code below to the Main.java, replace Your-Api-Key with the API-Key of Visual Recognition service that you copied before and Run the program.
-	```
+
+	```Java
 		import com.ibm.watson.developer_cloud.service.security.IamOptions;
 		import com.ibm.watson.developer_cloud.visual_recognition.v3.*;
 		import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
@@ -78,12 +85,14 @@ Copy the code below to the Main.java, replace Your-Api-Key with the API-Key of V
 	```
 
 For more information [Go To Watson Visual Recognition API Reference](https://cloud.ibm.com/apidocs/visual-recognition?language=java#classify-images).
+
 ![Screenshot](https://github.com/tal2k4xj/Watson_Gradle_Clean/blob/master/images/visualrecognitioncode.png?raw=true)
 
 ### 5. How to use Cloudant NoSQL service:
 
 Copy the code below to the Main.java, replace Your-Api-Key & Your-URL with the API-Key & URL of Cloudant service that you copied before and Run the program.
-	```
+	
+	```Java
 		import com.cloudant.client.api.ClientBuilder;
 		import com.cloudant.client.api.CloudantClient;
 		import com.cloudant.client.api.Database;
@@ -137,12 +146,14 @@ Copy the code below to the Main.java, replace Your-Api-Key & Your-URL with the A
 	```
 
 For more information [Go To Cloudant NoSQL Java SDK Reference](https://github.com/cloudant/java-cloudant#getting-started).
+
 ![Screenshot](https://github.com/tal2k4xj/Watson_Gradle_Clean/blob/master/images/cloudantjavasdk.png?raw=true)
 
 ### 6. How to use Nutritionix API:
 
 Copy the code below to the Main.java and Run the program.
-	```
+
+	```Java
 		import java.io.BufferedReader;
 		import java.io.DataOutputStream;
 		import java.io.IOException;
@@ -198,4 +209,5 @@ Copy the code below to the Main.java and Run the program.
 	```
 
 For more information [Go To Nutritionix API Live Demo](https://www.nutritionix.com/natural-demo).
+
 ![Screenshot](https://github.com/tal2k4xj/Watson_Gradle_Clean/blob/master/images/nutritionxlivedemo.png?raw=true)
