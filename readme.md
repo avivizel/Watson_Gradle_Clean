@@ -54,7 +54,7 @@ On the left menu press on "Service credentials", click on "New credential" butto
 
 Copy the code below to the Main.java, replace Your-Api-Key with the API-Key of Visual Recognition service that you copied before and Run the program.
 
-	```Java
+	```
 	import com.ibm.watson.developer_cloud.service.security.IamOptions;
 	import com.ibm.watson.developer_cloud.visual_recognition.v3.*;
 	import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
@@ -92,7 +92,7 @@ For more information [Go To Watson Visual Recognition API Reference](https://clo
 
 Copy the code below to the Main.java, replace Your-Api-Key & Your-URL with the API-Key & URL of Cloudant service that you copied before and Run the program.
 	
-	```Java
+	```
 	import com.cloudant.client.api.ClientBuilder;
 	import com.cloudant.client.api.CloudantClient;
 	import com.cloudant.client.api.Database;
@@ -153,7 +153,7 @@ For more information [Go To Cloudant NoSQL Java SDK Reference](https://github.co
 
 Copy the code below to the Main.java and Run the program.
 
-	```Java
+	```
 	import java.io.BufferedReader;
 	import java.io.DataOutputStream;
 	import java.io.IOException;
